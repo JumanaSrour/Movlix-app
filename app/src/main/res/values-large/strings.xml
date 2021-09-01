@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="email">Email</string>
+    <string name="forget_password">Forget Password?</string>
+    <string name="bernard">Bernard Goodman</string>
+    <string name="bernice">Bernice Frazier</string>
+    <string name="jon">Jon Barnes</string>
+    <string name="send_email">Send Email</string>
+    <string name="required">this field is required</string>
+</resources>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="password">Password</string>
+    <string name="This_is_how_it_alwa">This Is How It Alwa</string>
+    <string name="log_out">Log out</string>
+    <string name="are_you_sure_logout">Are you sure you want to Log out?</string>
+    <string name="accept">Accept</string>
+    <string name="cancel">Cancel</string>
+    <string name="are_you_sure_signout">Are you sure you want to Sign out?</string>
+    <string name="get_first_movie"><![CDATA[Get the first  Movie &TV information]]></string>
+    <string name="know_the_movie">Know the movie is not worth Watching</string>
+    <string name="realtime_updates">Real-time updates movie Trailer</string>
+    <string name="zack_snyder">Zack Snyder</string>
+    <string name="ben">Ben Affleck</string>
+    <string name="gal">Gal Gadot</string>
+    <string name="amy">Amy Adams</string>
+    <string name="henry">Henry Cavill</string>
+    <string name="roy">Roy McKenzie</string>
+    <string name="the_french">The French Revolution constituted for the conscience of the dominant aristocratic class a fall from innocence, and upturning of the natural chain of events that resounded all over Europe</string>
+</resources>
