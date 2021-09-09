@@ -1,4 +1,4 @@
-package com.example.movlix.activities
+package com.example.movlix.feature.movieDetails.view
 
 import android.content.Intent
 import android.os.Build

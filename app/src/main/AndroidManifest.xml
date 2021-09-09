@@ -19,11 +19,11 @@
             android:exported="true"
             android:theme="@style/status_bar"/>
         <activity
-            android:name=".activities.MovieDetailsActivity"
+            android:name=".feature.movieDetails.view.MovieDetailsActivity"
             android:exported="true"
             android:theme="@style/status_bar" />
         <activity
-            android:name=".activities.HomeMoviesActivity"
+            android:name=".feature.homeMovies.view.HomeMoviesActivity"
             android:exported="true"
             android:theme="@style/status_bar" />
         <activity

@@ -28,4 +28,12 @@ interface Api {
     suspend fun forgetPassword(
         @FieldMap map: ArrayMap<String, Any>
     ): Response<AppResponse>
+
+
+    // Movies Api
+    @FormUrlEncoded
+    @POST("movies")
+    suspend fun listOfMovies(
+        @FieldMap map: ArrayMap<String, Any>
+    ): Response<AppResponse>
 }

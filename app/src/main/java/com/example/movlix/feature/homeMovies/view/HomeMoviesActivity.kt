@@ -1,16 +1,13 @@
-package com.example.movlix.activities
+package com.example.movlix.feature.homeMovies.view
 
 import android.content.Intent
-import android.content.SharedPreferences
-import android.content.res.Resources
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.annotation.RequiresApi
-import androidx.lifecycle.Lifecycle
 import com.example.movlix.R
 import com.example.movlix.feature.login.view.LoginActivity
-import com.example.movlix.feature.profile.presenter.ProfilePresenter
+import com.example.movlix.feature.movieDetails.view.MovieDetailsActivity
 import com.example.movlix.feature.profile.view.ProfileActivity
 import com.example.movlix.ui.main.adapters.MovieAdapter
 import com.example.movlix.network.asp.models.CustomDialog
