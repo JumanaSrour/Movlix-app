@@ -36,4 +36,11 @@ interface Api {
     suspend fun listOfMovies(
         @FieldMap map: ArrayMap<String, Any>
     ): Response<AppResponse>
+
+    @FormUrlEncoded
+    @POST("favorite")
+    suspend fun favoriteItem(
+        @FieldMap map:ArrayMap<String, Any>
+    ): Response<AppResponse>
+
 }

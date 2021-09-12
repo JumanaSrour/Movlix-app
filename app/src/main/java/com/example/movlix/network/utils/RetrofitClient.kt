@@ -1,20 +1,13 @@
 package com.example.movlix.network.utils
 
-import android.provider.Settings
 import androidx.collection.ArrayMap
-import com.bumptech.glide.Glide.init
 import com.example.movlix.network.asp.models.AppResponse
-import com.example.movlix.network.asp.models.LoginResponse
-import com.example.movlix.network.asp.models.User
 import com.example.movlix.network.utils.Constants.Companion.BASE_URL
 import com.example.movlix.utils.storage.SharedPrefManager
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
-import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.CoroutineScope
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
-import retrofit2.Call
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -40,7 +33,6 @@ class RetrofitClient {
 
         }
     }
-
 
     private fun init(interceptor: Interceptor) {
         val httpLoggingInterceptor = HttpLoggingInterceptor()
@@ -77,6 +69,14 @@ class RetrofitClient {
 
     suspend fun userProfile(): Response<AppResponse> {
         return api!!.userProfile()
+    }
+
+    suspend fun listOfMovies(map: ArrayMap<String, Any>): Response<AppResponse>{
+        return api!!.listOfMovies(map)
+    }
+
+    suspend fun addFavoriteItem(map:ArrayMap<String, Any>): Response<AppResponse>{
+        return api!!.favoriteItem(map)
     }
 
 }

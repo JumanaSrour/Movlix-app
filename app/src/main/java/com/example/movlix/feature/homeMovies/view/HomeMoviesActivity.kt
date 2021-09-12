@@ -30,56 +30,80 @@ class HomeMoviesActivity : AppCompatActivity(), MovieAdapter.OnClick {
             Movie(
                 movieId = 1,
                 movieImage = R.drawable.movie_img1,
-                movieName = getString(R.string.conversations_with)
+                movieName = getString(R.string.conversations_with),
+                movie_rate = 3,
+                movie_rate_number = "7",
+                movie_votes = "257"
             )
         )
         movieItems.add(
             Movie(
                 movieId = 2,
                 movieImage = R.drawable.movie_img2,
-                movieName = getString(R.string.This_is_how_it_alwa)
+                movieName = getString(R.string.This_is_how_it_alwa),
+                movie_rate = 3,
+                movie_rate_number = "8",
+                movie_votes = "300"
             )
         )
         movieItems.add(
             Movie(
                 movieId = 3,
                 movieImage = R.drawable.movie_img1,
-                movieName = getString(R.string.conversations_with)
+                movieName = getString(R.string.conversations_with),
+                movie_rate = 4,
+                movie_rate_number = "6",
+                movie_votes = "220"
             )
         )
         movieItems.add(
             Movie(
                 movieId = 4,
                 movieImage = R.drawable.movie_img2,
-                movieName = getString(R.string.This_is_how_it_alwa)
+                movieName = getString(R.string.This_is_how_it_alwa),
+                movie_rate = 4,
+                movie_rate_number = "7",
+                movie_votes = "257"
             )
         )
         movieItems.add(
             Movie(
                 movieId = 5,
                 movieImage = R.drawable.movie_img1,
-                movieName = getString(R.string.conversations_with)
+                movieName = getString(R.string.conversations_with),
+                movie_rate = 3,
+                movie_rate_number = "7",
+                movie_votes = "257"
             )
         )
         movieItems.add(
             Movie(
                 movieId = 6,
                 movieImage = R.drawable.movie_img2,
-                movieName = getString(R.string.This_is_how_it_alwa)
+                movieName = getString(R.string.This_is_how_it_alwa),
+                movie_rate = 3,
+                movie_rate_number = "7",
+                movie_votes = "257"
             )
         )
         movieItems.add(
             Movie(
                 movieId = 7,
                 movieImage = R.drawable.movie_img1,
-                movieName = getString(R.string.conversations_with)
+                movieName = getString(R.string.conversations_with),
+                movie_rate = 3,
+                movie_rate_number = "7",
+                movie_votes = "257"
             )
         )
         movieItems.add(
             Movie(
                 movieId = 8,
                 movieImage = R.drawable.movie_img2,
-                movieName = getString(R.string.This_is_how_it_alwa)
+                movieName = getString(R.string.This_is_how_it_alwa),
+                movie_rate = 3,
+                movie_rate_number = "7",
+                movie_votes = "257"
             )
         )
 

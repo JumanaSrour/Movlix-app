@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.movlix.R
+import com.example.movlix.feature.homeMovies.view.HomeMoviesActivity
 import com.example.movlix.feature.login.view.LoginActivity
 import com.example.movlix.network.asp.models.CustomDialog
 import com.example.movlix.network.asp.models.CustomDialog.CustomDialogListener

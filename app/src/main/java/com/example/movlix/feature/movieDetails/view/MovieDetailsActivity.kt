@@ -6,8 +6,11 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import com.example.movlix.R
+import com.example.movlix.feature.favortieItem.presenter.FavoritePresenter
+import com.example.movlix.feature.favortieItem.view.FavoriteView
 import com.example.movlix.feature.login.view.LoginActivity
 import com.example.movlix.ui.main.adapters.MovieCastAdapter
 import com.example.movlix.ui.main.adapters.MovieReviewAdapter
@@ -17,8 +20,9 @@ import com.example.movlix.network.asp.models.Review
 import com.google.android.material.appbar.AppBarLayout
 import kotlinx.android.synthetic.main.activity_movie_details.*
 
-class MovieDetailsActivity : AppCompatActivity() {
+class MovieDetailsActivity : AppCompatActivity(), FavoriteView {
 
+    private lateinit var mPresenter: FavoritePresenter
     private lateinit var movieCastAdapter: MovieCastAdapter
     private lateinit var movieReviewAdapter: MovieReviewAdapter
     private lateinit var mAppBarStateChangeListener: AppBarLayout
@@ -26,7 +30,7 @@ class MovieDetailsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_movie_details)
-
+        initPresenter()
           btn_login_details.setOnClickListener {
               startActivity(Intent(this, LoginActivity::class.java))
               finish()
@@ -119,5 +123,19 @@ class MovieDetailsActivity : AppCompatActivity() {
         }
         )
 
+        //Favorite/unFavorite item
+        star_movie.setOnClickListener {
+        }
+
+    }
+
+    @RequiresApi(Build.VERSION_CODES.M)
+    private fun initPresenter() {
+        mPresenter = FavoritePresenter(this, this)
+        mPresenter.addFavoriteItem()
+    }
+
+    override fun showErrorMsg(msg: String?) {
+        Log.e("------", "showErrorMsg: $msg", )
     }
 }

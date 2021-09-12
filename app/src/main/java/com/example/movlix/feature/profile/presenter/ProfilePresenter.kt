@@ -5,7 +5,6 @@ import android.os.Build
 import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
-import com.example.movlix.activities.HomeMoviesActivity
 import com.example.movlix.feature.profile.view.ProfileActivity
 import com.example.movlix.feature.profile.view.ProfileView
 import com.example.movlix.network.asp.features.UserRequest

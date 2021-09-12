@@ -1,15 +1,12 @@
 package com.example.movlix.network.asp.features
 
 import android.util.Log
+import android.widget.ImageButton
 import androidx.collection.ArrayMap
 import com.example.movlix.network.utils.RetrofitClient
 import kotlinx.coroutines.Dispatchers
 import com.example.movlix.feature.login.view.LoginView
-import com.example.movlix.feature.profile.view.ProfileView
-import com.example.movlix.network.asp.models.ForgetPasswordResponse
-import com.example.movlix.network.asp.models.LoginResponse
-import com.example.movlix.network.asp.models.ProfileResponse
-import com.example.movlix.network.asp.models.User
+import com.example.movlix.network.asp.models.*
 import com.example.movlix.network.utils.RequestListener
 import com.example.movlix.utils.storage.SharedPrefManager
 import com.google.gson.Gson
@@ -43,7 +40,7 @@ class UserRequest {
 
     }
 
-    fun loginUser(map: ArrayMap<String, Any>, listener: RequestListener<LoginResponse>) {
+    fun loginUser(map:ArrayMap<String, Any>, listener: RequestListener<LoginResponse>) {
         GlobalScope.launch(Dispatchers.Main) {
             val response = retrofitClient.loginUser(map)
             if (response.isSuccessful) {
@@ -103,6 +100,51 @@ class UserRequest {
                     listener.onFailure(appResponse.message)
                 }
             } else {
+                listener.onFailure(response.message())
+            }
+        }
+    }
+
+    fun getMovie(map: ArrayMap<String, Any>, listener: RequestListener<MovieResponse>){
+        GlobalScope.launch (Dispatchers.IO){
+            val response = retrofitClient.listOfMovies(map)
+            if (response.isSuccessful) {
+                val appResponse = response.body()!!
+                if (appResponse.status) {
+                    val data = gson.fromJson(
+                        appResponse.getResult(),
+                        MovieResponse::class.java
+                    ) as MovieResponse
+                    listener.onSuccess(data)
+
+                } else {
+                    listener.onFailure(appResponse.message)
+                }
+            } else {
+                listener.onFailure(response.message())
+            }
+        }
+    }
+
+    fun addFavoriteItem(map: ArrayMap<String, Any>, listener: RequestListener<FavoriteResponse>){
+        GlobalScope.launch(Dispatchers.IO) {
+            val response = retrofitClient.addFavoriteItem(map)
+            if (response.isSuccessful) {
+                val appResponse = response.body()!!
+                if (appResponse.status) {
+                    val data = gson.fromJson(
+                        appResponse.getResult(),
+                        FavoriteResponse::class.java
+                    ) as FavoriteResponse
+                    listener.onSuccess(data)
+                    appResponse.status
+                    appResponse.message
+                    mView!!.returnUser(SharedPrefManager.user)
+                    SharedPrefManager.token
+                } else{
+                    listener.onFailure(appResponse.message)
+                }
+            } else{
                 listener.onFailure(response.message())
             }
         }

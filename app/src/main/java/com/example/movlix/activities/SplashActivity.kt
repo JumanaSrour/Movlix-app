@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.view.WindowManager
 import com.example.movlix.R
+import com.example.movlix.feature.homeMovies.view.HomeMoviesActivity
 import com.example.movlix.feature.login.view.LoginActivity
 import com.example.movlix.utils.MovlixApp
 import com.example.movlix.utils.storage.SharedPrefManager

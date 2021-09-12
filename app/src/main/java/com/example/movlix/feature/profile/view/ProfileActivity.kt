@@ -9,9 +9,9 @@ import android.util.Log
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import com.example.movlix.R
-import com.example.movlix.activities.HomeMoviesActivity
-import com.example.movlix.activities.MovieDetailsActivity
 import com.example.movlix.activities.SettingsActivity
+import com.example.movlix.feature.homeMovies.view.HomeMoviesActivity
+import com.example.movlix.feature.movieDetails.view.MovieDetailsActivity
 import com.example.movlix.feature.profile.presenter.ProfilePresenter
 import com.example.movlix.ui.main.adapters.MovieAdapter
 import com.example.movlix.network.asp.models.Movie
@@ -34,42 +34,66 @@ class ProfileActivity : AppCompatActivity(), MovieAdapter.OnClick, ProfileView{
         movieItems.add(Movie(
             movieId = 1,
             movieImage = R.drawable.movie_img1,
-            movieName = getString(R.string.conversations_with)
+            movieName = getString(R.string.conversations_with),
+            movie_rate = 3,
+            movie_rate_number = "7",
+            movie_votes = "257"
         ))
         movieItems.add(Movie(
             movieId = 2,
             movieImage = R.drawable.movie_img2,
-            movieName = getString(R.string.This_is_how_it_alwa)
+            movieName = getString(R.string.This_is_how_it_alwa),
+            movie_rate = 3,
+            movie_rate_number = "7",
+            movie_votes = "257"
         ))
         movieItems.add(Movie(
             movieId = 3,
             movieImage = R.drawable.movie_img1,
-            movieName = getString(R.string.conversations_with)
+            movieName = getString(R.string.conversations_with),
+            movie_rate = 3,
+            movie_rate_number = "7",
+            movie_votes = "257"
         ))
         movieItems.add(Movie(
             movieId = 4,
             movieImage = R.drawable.movie_img2,
-            movieName = getString(R.string.This_is_how_it_alwa)
+            movieName = getString(R.string.This_is_how_it_alwa),
+            movie_rate = 3,
+            movie_rate_number = "7",
+            movie_votes = "257"
         ))
         movieItems.add(Movie(
             movieId = 5,
             movieImage = R.drawable.movie_img1,
-            movieName = getString(R.string.conversations_with)
+            movieName = getString(R.string.conversations_with),
+            movie_rate = 3,
+            movie_rate_number = "7",
+            movie_votes = "257"
         ))
         movieItems.add(Movie(
             movieId = 6,
             movieImage = R.drawable.movie_img2,
-            movieName = getString(R.string.This_is_how_it_alwa)
+            movieName = getString(R.string.This_is_how_it_alwa),
+            movie_rate = 3,
+            movie_rate_number = "7",
+            movie_votes = "257"
         ))
         movieItems.add(Movie(
             movieId = 7,
             movieImage = R.drawable.movie_img1,
-            movieName = getString(R.string.conversations_with)
+            movieName = getString(R.string.conversations_with),
+            movie_rate = 3,
+            movie_rate_number = "7",
+            movie_votes = "257"
         ))
         movieItems.add(Movie(
             movieId = 8,
             movieImage = R.drawable.movie_img2,
-            movieName = getString(R.string.This_is_how_it_alwa)
+            movieName = getString(R.string.This_is_how_it_alwa),
+            movie_rate = 3,
+            movie_rate_number = "7",
+            movie_votes = "257"
         ))
 
         movieAdapter = MovieAdapter(this, this,this,  movieItems)

@@ -9,8 +9,8 @@ import android.util.Log
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import com.example.movlix.R
-import com.example.movlix.activities.HomeMoviesActivity
 import com.example.movlix.feature.forgetPassword.view.ForgetPasswordActivity
+import com.example.movlix.feature.homeMovies.view.HomeMoviesActivity
 import com.example.movlix.feature.login.presenter.LoginPresenter
 import com.example.movlix.feature.signup.view.SignupActivity
 import com.example.movlix.network.asp.models.User

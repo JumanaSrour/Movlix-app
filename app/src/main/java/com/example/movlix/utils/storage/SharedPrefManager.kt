@@ -6,6 +6,10 @@ import com.example.movlix.network.asp.models.TokenBean
 import com.example.movlix.network.asp.models.User
 import com.example.movlix.utils.MovlixApp
 import com.google.gson.Gson
+import android.content.SharedPreferences
+import androidx.core.content.edit
+import okhttp3.internal.cache2.Relay.Companion.edit
+
 
 class SharedPrefManager() {
     companion object {
@@ -65,9 +69,27 @@ class SharedPrefManager() {
 
         }
 
+//        fun saveState(isFavourite: Boolean) {
+//            val sharedPreferences: SharedPreferences = MovlixApp.getInstance().getSharedPreferences(
+//                SHARED_FAVORITE, Context.MODE_PRIVATE
+//            )
+//            val editor = SharedPreferences.edit()
+//            editor.putBoolean(SHARED_STATE, isFavourite)
+//            editor.apply()
+//        }
+//
+//        fun readState(): Boolean {
+//            val aSharedPreferences: SharedPreferences = MovlixApp.getInstance().getSharedPreferences(
+//                SHARED_FAVORITE, Context.MODE_PRIVATE
+//            )
+//            return aSharedPreferences.getBoolean("State", true)
+//        }
+
         private val SHARED_PREF_NAME = "movlix"
         private val SHARED_USER = "user"
         private val SHARED_TOKEN = "token"
+//        private val SHARED_STATE = "state"
+//        private val SHARED_FAVORITE = "favorite"
 
         @SuppressLint("StaticFieldLeak")
         private var mInstance: SharedPrefManager? = null

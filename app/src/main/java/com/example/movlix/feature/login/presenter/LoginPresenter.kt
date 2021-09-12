@@ -70,7 +70,7 @@ class LoginPresenter(val mActivity: Activity, var mView: LoginView,val lifecycle
 
              UserRequest().loginUser(params, object : RequestListener<LoginResponse>{
                  override fun onSuccess(data: LoginResponse) {
-                     // save object useer
+                     // save object user
                      // save is login
                      Log.e("-------------", "$data ", )
                      mView.returnUser(data.user)
