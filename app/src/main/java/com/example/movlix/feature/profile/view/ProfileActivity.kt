@@ -8,8 +8,11 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.annotation.RequiresApi
+import androidx.recyclerview.widget.RecyclerView
 import com.example.movlix.R
 import com.example.movlix.activities.SettingsActivity
+import com.example.movlix.feature.addFavoriteItem.presenter.FavoritePresenter
+import com.example.movlix.feature.addFavoriteItem.view.FavoriteView
 import com.example.movlix.feature.homeMovies.view.HomeMoviesActivity
 import com.example.movlix.feature.movieDetails.view.MovieDetailsActivity
 import com.example.movlix.feature.profile.presenter.ProfilePresenter
@@ -17,11 +20,13 @@ import com.example.movlix.ui.main.adapters.MovieAdapter
 import com.example.movlix.network.asp.models.Movie
 import com.example.movlix.network.asp.models.User
 import com.example.movlix.utils.storage.SharedPrefManager
+import kotlinx.android.synthetic.main.activity_home_movies.*
 import kotlinx.android.synthetic.main.activity_profile.*
 import okhttp3.internal.userAgent
 
-class ProfileActivity : AppCompatActivity(), MovieAdapter.OnClick, ProfileView{
+class ProfileActivity : AppCompatActivity(), MovieAdapter.OnClick, ProfileView, FavoriteView{
     private lateinit var mPresenter: ProfilePresenter
+    private lateinit var favoritePresenter: FavoritePresenter
     private lateinit var movieAdapter: MovieAdapter
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -98,6 +103,15 @@ class ProfileActivity : AppCompatActivity(), MovieAdapter.OnClick, ProfileView{
 
         movieAdapter = MovieAdapter(this, this,this,  movieItems)
         rv_favortie.adapter = movieAdapter
+        rv_favortie.addOnScrollListener(object : RecyclerView.OnScrollListener(){
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+
+                // if scroll top
+                // if scroll bottom
+                // if scroll down-current state in the end of page, hit the request
+                super.onScrolled(recyclerView, dx, dy)
+            }
+        })
 
         ib_settings.setOnClickListener {
             startActivity(Intent(this, SettingsActivity::class.java))
@@ -114,6 +128,10 @@ class ProfileActivity : AppCompatActivity(), MovieAdapter.OnClick, ProfileView{
         mPresenter = ProfilePresenter(this, this)
         mPresenter.getUser()
         tv_username.text = (SharedPrefManager.user.name)
+
+        favoritePresenter = FavoritePresenter(this, this)
+        favoritePresenter.addFavoriteItem()
+
     }
 
 

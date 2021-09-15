@@ -1,17 +1,19 @@
 package com.example.movlix.network.asp.features
 
 import android.util.Log
-import android.widget.ImageButton
 import androidx.collection.ArrayMap
 import com.example.movlix.network.utils.RetrofitClient
 import kotlinx.coroutines.Dispatchers
 import com.example.movlix.feature.login.view.LoginView
 import com.example.movlix.network.asp.models.*
+import com.example.movlix.network.utils.PaginationListener
 import com.example.movlix.network.utils.RequestListener
 import com.example.movlix.utils.storage.SharedPrefManager
 import com.google.gson.Gson
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import kotlin.reflect.javaType
+import kotlin.reflect.typeOf
 
 
 class UserRequest {
@@ -40,7 +42,7 @@ class UserRequest {
 
     }
 
-    fun loginUser(map:ArrayMap<String, Any>, listener: RequestListener<LoginResponse>) {
+    fun loginUser(map: ArrayMap<String, Any>, listener: RequestListener<LoginResponse>) {
         GlobalScope.launch(Dispatchers.Main) {
             val response = retrofitClient.loginUser(map)
             if (response.isSuccessful) {
@@ -105,8 +107,11 @@ class UserRequest {
         }
     }
 
-    fun getMovie(map: ArrayMap<String, Any>, listener: RequestListener<MovieResponse>){
-        GlobalScope.launch (Dispatchers.IO){
+    // ddnt read json
+    // form url in header
+    @ExperimentalStdlibApi
+    fun getMovie(map: ArrayMap<String, Any>, listener: PaginationListener<ArrayList<Movie>>) {
+        GlobalScope.launch(Dispatchers.IO) {
             val response = retrofitClient.listOfMovies(map)
             if (response.isSuccessful) {
                 val appResponse = response.body()!!
@@ -115,7 +120,11 @@ class UserRequest {
                         appResponse.getResult(),
                         MovieResponse::class.java
                     ) as MovieResponse
-                    listener.onSuccess(data)
+                    val myType = typeOf<List<Movie>>().javaType
+                    val list =
+                        gson.fromJson<List<Movie>>(data.getResult(), myType)
+
+                    listener.onSuccess(list as ArrayList<Movie>,data.total_pages)
 
                 } else {
                     listener.onFailure(appResponse.message)
@@ -126,7 +135,7 @@ class UserRequest {
         }
     }
 
-    fun addFavoriteItem(map: ArrayMap<String, Any>, listener: RequestListener<FavoriteResponse>){
+    fun addFavoriteItem(map: ArrayMap<String, Any>, listener: RequestListener<FavoriteResponse>) {
         GlobalScope.launch(Dispatchers.IO) {
             val response = retrofitClient.addFavoriteItem(map)
             if (response.isSuccessful) {
@@ -136,15 +145,16 @@ class UserRequest {
                         appResponse.getResult(),
                         FavoriteResponse::class.java
                     ) as FavoriteResponse
+                    SharedPrefManager.token
                     listener.onSuccess(data)
                     appResponse.status
                     appResponse.message
                     mView!!.returnUser(SharedPrefManager.user)
                     SharedPrefManager.token
-                } else{
+                } else {
                     listener.onFailure(appResponse.message)
                 }
-            } else{
+            } else {
                 listener.onFailure(response.message())
             }
         }

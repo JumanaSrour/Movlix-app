@@ -16,7 +16,7 @@
         <entry key="..\:/Users/HP/AndroidStudioProjects/Movlix/app/src/main/res/drawable/tv_style.xml" value="0.2203125" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/Movlix/app/src/main/res/drawable/txtbox_style.xml" value="0.1953125" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/Movlix/app/src/main/res/layout/activity_forget_password.xml" value="0.25" />
-        <entry key="..\:/Users/HP/AndroidStudioProjects/Movlix/app/src/main/res/layout/activity_home_movies.xml" value="0.4444444444444444" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/Movlix/app/src/main/res/layout/activity_home_movies.xml" value="0.18" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/Movlix/app/src/main/res/layout/activity_login.xml" value="0.25" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/Movlix/app/src/main/res/layout/activity_movie_cast_adapter.xml" value="0.17708333333333334" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/Movlix/app/src/main/res/layout/activity_movie_details.xml" value="0.25" />
@@ -26,9 +26,12 @@
         <entry key="..\:/Users/HP/AndroidStudioProjects/Movlix/app/src/main/res/layout/activity_settings.xml" value="0.22" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/Movlix/app/src/main/res/layout/activity_signup.xml" value="0.22" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/Movlix/app/src/main/res/layout/activity_splash.xml" value="0.25" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/Movlix/app/src/main/res/layout/adapter_last_add.xml" value="0.13269927536231885" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/Movlix/app/src/main/res/layout/cast_item.xml" value="0.2" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/Movlix/app/src/main/res/layout/custom_dilog.xml" value="0.22" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/Movlix/app/src/main/res/layout/dialog_bg.xml" value="0.16530797101449277" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/Movlix/app/src/main/res/layout/item_progress.xml" value="0.3814814814814815" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/Movlix/app/src/main/res/layout/load_more.xml" value="0.13269927536231885" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/Movlix/app/src/main/res/layout/movie_item.xml" value="0.33" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/Movlix/app/src/main/res/layout/onboarding_item_container.xml" value="0.15" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/Movlix/app/src/main/res/layout/review_item.xml" value="0.29666254635352285" />

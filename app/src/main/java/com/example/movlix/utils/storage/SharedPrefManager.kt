@@ -6,9 +6,7 @@ import com.example.movlix.network.asp.models.TokenBean
 import com.example.movlix.network.asp.models.User
 import com.example.movlix.utils.MovlixApp
 import com.google.gson.Gson
-import android.content.SharedPreferences
-import androidx.core.content.edit
-import okhttp3.internal.cache2.Relay.Companion.edit
+import com.example.movlix.network.asp.models.Movie
 
 
 class SharedPrefManager() {
@@ -44,6 +42,22 @@ class SharedPrefManager() {
                 )
             }
 
+        val movie: Movie
+        get(){
+           gson = Gson()
+           return gson.fromJson(
+               MovlixApp.getInstance()
+                   .getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE).getString(
+                       SAHRED_MOVIE, null
+                   ), Movie::class.java
+           )
+        }
+
+        fun saveMovie(movie: Movie){
+            MovlixApp.getInstance().getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE)
+                .edit()
+                .putString(SAHRED_MOVIE, gson.toJson(movie)).apply()
+        }
 
         fun saveUser(user: User) {
             MovlixApp.getInstance().getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE)
@@ -88,6 +102,7 @@ class SharedPrefManager() {
         private val SHARED_PREF_NAME = "movlix"
         private val SHARED_USER = "user"
         private val SHARED_TOKEN = "token"
+        private val SAHRED_MOVIE = "movie"
 //        private val SHARED_STATE = "state"
 //        private val SHARED_FAVORITE = "favorite"
 

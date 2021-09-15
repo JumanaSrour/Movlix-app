@@ -6,11 +6,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.Toast
 import androidx.annotation.RequiresApi
 import com.example.movlix.R
-import com.example.movlix.feature.favortieItem.presenter.FavoritePresenter
-import com.example.movlix.feature.favortieItem.view.FavoriteView
+import com.example.movlix.feature.addFavoriteItem.presenter.FavoritePresenter
+import com.example.movlix.feature.addFavoriteItem.view.FavoriteView
 import com.example.movlix.feature.login.view.LoginActivity
 import com.example.movlix.ui.main.adapters.MovieCastAdapter
 import com.example.movlix.ui.main.adapters.MovieReviewAdapter

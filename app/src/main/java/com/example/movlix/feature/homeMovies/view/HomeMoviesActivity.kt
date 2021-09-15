@@ -4,8 +4,17 @@ import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import android.view.LayoutInflater
+import android.widget.AbsListView
+import android.widget.NumberPicker
+import android.widget.Toast
 import androidx.annotation.RequiresApi
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.movlix.R
+import com.example.movlix.feature.homeMovies.presenter.MoviePresenter
 import com.example.movlix.feature.login.view.LoginActivity
 import com.example.movlix.feature.movieDetails.view.MovieDetailsActivity
 import com.example.movlix.feature.profile.view.ProfileActivity
@@ -14,15 +23,22 @@ import com.example.movlix.network.asp.models.CustomDialog
 import com.example.movlix.network.asp.models.Movie
 import com.example.movlix.network.asp.models.CustomDialog.CustomDialogListener
 import com.example.movlix.utils.storage.SharedPrefManager
+import com.sundus.abjw.moge.utils.PaginationLinearScrollListener
 import kotlinx.android.synthetic.main.activity_home_movies.*
 
-class HomeMoviesActivity : AppCompatActivity(), MovieAdapter.OnClick {
+class HomeMoviesActivity : AppCompatActivity(), MovieAdapter.OnClick , MovieView{
+    private val TOTAL_PAGES: Int = 10
+    private val PAGE_START: Int = 1
+    private var isLastPage: Boolean = true
+    private var currentPage: Int= 1
+   private var isLoading: Boolean = false
     private lateinit var movieAdapter: MovieAdapter
+    private lateinit var mPresenter: MoviePresenter
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home_movies)
-
+        initPreseneter()
 
         val movieItems = arrayListOf<Movie>()
 
@@ -110,7 +126,30 @@ class HomeMoviesActivity : AppCompatActivity(), MovieAdapter.OnClick {
 
         movieAdapter = MovieAdapter(this, this, this, movieItems)
         rv_movies.adapter = movieAdapter
+        rv_movies.addOnScrollListener(object : PaginationLinearScrollListener(layoutManager = LinearLayoutManager(applicationContext)){
+            override fun onScrolledList(dx: Int, dy: Int) {
+                TODO("Not yet implemented")
+            }
 
+            override fun loadMoreItems() {
+                isLoading = true
+                currentPage += 1
+                loadNextPage()
+            }
+
+            override fun setEnabled(refresh: Boolean) {
+                TODO("Not yet implemented")
+            }
+
+            override fun _isLastPage(): Boolean {
+                return isLastPage
+            }
+
+            override fun _isLoading(): Boolean {
+                return isLastPage
+            }
+        })
+        loadFirstPage()
 
 
         ib_logout.setOnClickListener {
@@ -122,6 +161,32 @@ class HomeMoviesActivity : AppCompatActivity(), MovieAdapter.OnClick {
         }
 
 
+    }
+
+    @RequiresApi(Build.VERSION_CODES.M)
+    private fun loadNextPage() {
+        if (currentPage <= TOTAL_PAGES) {
+            movieAdapter.addLoadingFooter()
+        } else {
+            isLastPage = true
+        }
+        getDataFromServer()
+    }
+
+    @RequiresApi(Build.VERSION_CODES.M)
+    private fun loadFirstPage() {
+        currentPage = PAGE_START
+        var data = ArrayList<Movie>()
+        isLastPage = false
+        getDataFromServer()
+    }
+
+    @RequiresApi(Build.VERSION_CODES.M)
+    public fun getDataFromServer() {
+    }
+
+    private fun initPreseneter() {
+       mPresenter  = MoviePresenter(this, this)
     }
 
 
@@ -150,6 +215,14 @@ class HomeMoviesActivity : AppCompatActivity(), MovieAdapter.OnClick {
 
     override fun onClickItem(data: Movie, position: Int) {
         startActivity(Intent(this, MovieDetailsActivity::class.java))
+    }
+
+    override fun returnMovie(movie: Movie?) {
+        Log.e("--------", "returnMovie: $movie ", )
+    }
+
+    override fun showErrorMsg(msg: String?) {
+        Log.e("------", "showErrorMsg: $msg", )
     }
 
 

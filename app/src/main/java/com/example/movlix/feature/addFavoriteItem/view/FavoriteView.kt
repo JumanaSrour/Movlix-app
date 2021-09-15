@@ -1,4 +1,4 @@
-package com.example.movlix.feature.favortieItem.view
+package com.example.movlix.feature.addFavoriteItem.view
 
 
 interface FavoriteView {

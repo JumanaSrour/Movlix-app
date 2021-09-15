@@ -13,5 +13,10 @@ class Constants {
         var clientId = "9412684d-8750-4192-8aff-785004a95b19"
         var clientSecret = "4Nj6iDkjlm5n0G9PBfk7DAQPhHf6beMozYT5CnVj"
         var movie_id = 1
+//        var total_pages = 10
+//        var current_page = 1
+//        var total_records = 10
+        var page_size = 10
+        var page_number = 1
     }
 }

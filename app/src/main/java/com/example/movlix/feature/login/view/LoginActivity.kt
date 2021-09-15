@@ -10,16 +10,19 @@ import android.widget.Toast
 import androidx.annotation.RequiresApi
 import com.example.movlix.R
 import com.example.movlix.feature.forgetPassword.view.ForgetPasswordActivity
+import com.example.movlix.feature.homeMovies.presenter.MoviePresenter
 import com.example.movlix.feature.homeMovies.view.HomeMoviesActivity
+import com.example.movlix.feature.homeMovies.view.MovieView
 import com.example.movlix.feature.login.presenter.LoginPresenter
 import com.example.movlix.feature.signup.view.SignupActivity
+import com.example.movlix.network.asp.models.Movie
 import com.example.movlix.network.asp.models.User
 import com.example.movlix.utils.MovlixApp
 import kotlinx.android.synthetic.main.activity_signup.*
 import kotlinx.android.synthetic.main.activity_signup.btn_login
 import kotlinx.android.synthetic.main.activity_signup.ed_password
 
-class LoginActivity : AppCompatActivity(), LoginView {
+class LoginActivity : AppCompatActivity(), LoginView{
     private lateinit var mPresenter: LoginPresenter
 
     @RequiresApi(Build.VERSION_CODES.M)
@@ -47,6 +50,7 @@ class LoginActivity : AppCompatActivity(), LoginView {
     }
 
 
+    @RequiresApi(Build.VERSION_CODES.M)
     private fun initPresenter() {
         mPresenter = LoginPresenter(this, this, this)
     }
@@ -54,6 +58,7 @@ class LoginActivity : AppCompatActivity(), LoginView {
     override fun returnUser(user: User) {
         startActivity(Intent(MovlixApp.getInstance(), HomeMoviesActivity::class.java))
     }
+
 
     override fun showErrorMsg(msg: String?) {
         Toast.makeText(applicationContext, "$msg", Toast.LENGTH_SHORT).show()

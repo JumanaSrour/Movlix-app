@@ -14,6 +14,7 @@ import com.example.movlix.utils.storage.SharedPrefManager
 class SplashActivity : AppCompatActivity() {
 
     lateinit var handler: Handler
+    @ExperimentalStdlibApi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)

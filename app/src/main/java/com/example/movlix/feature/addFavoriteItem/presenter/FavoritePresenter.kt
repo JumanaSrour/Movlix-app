@@ -1,25 +1,19 @@
-package com.example.movlix.feature.favortieItem.presenter
+package com.example.movlix.feature.addFavoriteItem.presenter
 
 import android.app.Activity
 import android.os.Build
-import android.util.ArrayMap
 import android.util.Log
 import androidx.annotation.RequiresApi
-import androidx.appcompat.app.AppCompatActivity
-import com.example.movlix.R
-import com.example.movlix.feature.favortieItem.view.FavoriteView
-import com.example.movlix.feature.homeMovies.view.HomeMoviesActivity
+import com.example.movlix.feature.addFavoriteItem.view.FavoriteView
 import com.example.movlix.feature.movieDetails.view.MovieDetailsActivity
 import com.example.movlix.network.asp.features.UserRequest
 import com.example.movlix.network.asp.models.FavoriteResponse
-import com.example.movlix.network.asp.models.User
 import com.example.movlix.network.utils.Constants.Companion.movie_id
 import com.example.movlix.network.utils.RequestListener
 import com.example.movlix.utils.AppSharedFunctions
-import kotlinx.android.synthetic.main.activity_movie_details.*
 
 data class FavoritePresenter(
-    val mActivity: MovieDetailsActivity,
+    val mActivity: Activity,
     val mView: FavoriteView
 ){
     @RequiresApi(Build.VERSION_CODES.M)
